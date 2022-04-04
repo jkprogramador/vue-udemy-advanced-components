@@ -1,4 +1,5 @@
 <template>
+    <p class="display-4 text-success">Hey!</p>
     <greetingItem></greetingItem>
 </template>
 
