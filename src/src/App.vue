@@ -7,10 +7,10 @@
         @onAgeChanged="updateAge"
     ></userItem>
     <form-item>
-        <div class="col-12 help">
-            <p>This is some help text</p>
-        </div>
-        <div class="col-md-7 fields">
+        <template v-slot:help>
+            <p>{{ help }}</p>
+        </template>
+        <template v-slot:fields>
             <div class="form-floating mb-3">
                 <input
                     id="email"
@@ -38,13 +38,42 @@
                 />
                 <label for="password">Password</label>
             </div>
-        </div>
-        <div class="col-12 buttons">
+        </template>
+        <template v-slot:buttons>
             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-        </div>
+        </template>
+
+        <p>Dummy text</p>
     </form-item>
 
-    <form-item />
+    <form-item>
+        <template v-slot:help>
+            <p>Contact help text</p>
+        </template>
+        <template v-slot:fields>
+            <div class="form-floating mb-3">
+                <input
+                    id="name"
+                    type="text"
+                    class="form-control"
+                    placeholder="Name"
+                />
+                <label for="name">Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input
+                    id="message"
+                    class="form-control"
+                    type="text"
+                    placeholder="Message"
+                />
+                <label for="message">Message</label>
+            </div>
+        </template>
+        <template v-slot:buttons>
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </template>
+    </form-item>
 </template>
 
 <script>
@@ -62,6 +91,7 @@ export default {
     data() {
         return {
             age: 20,
+            help: "This is some help text",
         };
     },
     methods: {
