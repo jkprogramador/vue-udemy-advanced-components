@@ -1,7 +1,11 @@
 <template>
     <p class="display-4 text-success">Hey!</p>
     <greetingItem :age="age"></greetingItem>
-    <userItem :age="age" @onAgeChanged="updateAge"></userItem>
+    <userItem
+        :age="age"
+        :ageChangedFn="updateAgeCb"
+        @onAgeChanged="updateAge"
+    ></userItem>
 </template>
 
 <script>
@@ -21,6 +25,9 @@ export default {
     },
     methods: {
         updateAge(num) {
+            this.age += num;
+        },
+        updateAgeCb(num) {
             this.age += num;
         },
     },
