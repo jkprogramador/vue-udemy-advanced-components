@@ -9,7 +9,16 @@
 <script>
 export default {
     name: "UserItem",
-    props: ["age"],
+    props: {
+        age: {
+            type: Number,
+            // required: true,
+            // default: 20,
+            validator(value) {
+                return value < 130;
+            },
+        },
+    },
     emits: ["onAgeChanged"],
     computed: {
         ageDoubled() {
