@@ -74,12 +74,27 @@
             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
         </template>
     </form-item>
+
+    <div class="row my-5">
+        <div class="col">
+            <select class="form-select" v-model="componentName">
+                <option value="HomeItem">Home</option>
+                <option value="AboutItem">About</option>
+            </select>
+
+            <keep-alive>
+                <component :is="componentName"></component>
+            </keep-alive>
+        </div>
+    </div>
 </template>
 
 <script>
 import GreetingItem from "./components/GreetingItem.vue";
 import UserItem from "./components/UserItem.vue";
 import FormItem from "./components/FormItem.vue";
+import HomeItem from "./components/HomeItem.vue";
+import AboutItem from "./components/AboutItem.vue";
 
 export default {
     name: "App",
@@ -87,11 +102,14 @@ export default {
         GreetingItem,
         UserItem,
         FormItem,
+        HomeItem,
+        AboutItem,
     },
     data() {
         return {
             age: 20,
             help: "This is some help text",
+            componentName: "HomeItem",
         };
     },
     methods: {
