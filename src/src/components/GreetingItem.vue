@@ -2,9 +2,10 @@
     <p class="display-2">{{ msg }}</p>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+$color: red;
 p {
-    color: red;
+    color: $color;
 }
 </style>
 
