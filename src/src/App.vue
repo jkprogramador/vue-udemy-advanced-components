@@ -1,4 +1,16 @@
 <template>
+    <!-- 'v' is an alias for the slot properties. It represents all properties bound to slot -->
+    <!-- Alternative syntax: #default="{ user }" where #: shorthand for v-slot, 'default' is a name for the slot, { user } destructures the properties object -->
+    <hello-world v-slot="v">
+        <p>Hello {{ v.user.name }}.</p>
+        <p>Favorites are:</p>
+        <ul>
+            <li v-for="(favorite, index) in v.favorites" :key="index">
+                {{ index }}. {{ favorite }}
+            </li>
+        </ul>
+    </hello-world>
+
     <p class="display-4 text-success">Hey!</p>
     <greetingItem :age="age"></greetingItem>
     <userItem
@@ -95,6 +107,7 @@ import UserItem from "./components/UserItem.vue";
 import FormItem from "./components/FormItem.vue";
 import HomeItem from "./components/HomeItem.vue";
 import AboutItem from "./components/AboutItem.vue";
+import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
     name: "App",
@@ -104,6 +117,7 @@ export default {
         FormItem,
         HomeItem,
         AboutItem,
+        HelloWorld,
     },
     data() {
         return {
